@@ -1,0 +1,61 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(cuid())
+  telegramId   String        @unique
+  firstName    String?
+  lastName     String?
+  username     String?
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+  reminders    Reminder[]
+  notes        Note[]
+  tasks        Task[]
+}
+
+model Transaction {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount      Float
+  type        String // 'expense' | 'income'
+  category    String
+  description String?
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
+
+model Reminder {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String // texto del recordatorio
+  dateTime  DateTime // fecha y hora para notificar
+  notified  Boolean  @default(false) // si ya se envió
+  createdAt DateTime @default(now())
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  dueDate     DateTime?
+  status      String    @default("pending") // pending, done
+  createdAt   DateTime  @default(now())
+}
