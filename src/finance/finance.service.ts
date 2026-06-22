@@ -27,17 +27,13 @@ export class FinanceService {
         const transactions = await this.prisma.transaction.findMany({
             where: { userId },
         });
-
         const totalExpenses = transactions
             .filter(t => t.type === 'expense')
             .reduce((acc, t) => acc + t.amount, 0);
-
         const totalIncome = transactions
             .filter(t => t.type === 'income')
             .reduce((acc, t) => acc + t.amount, 0);
-
         const balance = totalIncome - totalExpenses;
-
         return {
             totalExpenses,
             totalIncome,
@@ -46,17 +42,23 @@ export class FinanceService {
         };
     }
 
+    // ✅ NUEVO: Obtener todas las transacciones de un usuario
+    async getTransactions(userId: string) {
+        return this.prisma.transaction.findMany({
+            where: { userId },
+            orderBy: { date: 'desc' },
+        });
+    }
+
     async findOrCreateUser(telegramId: string) {
         let user = await this.prisma.user.findUnique({
             where: { telegramId },
         });
-
         if (!user) {
             user = await this.prisma.user.create({
                 data: { telegramId },
             });
         }
-
         return user;
     }
 }

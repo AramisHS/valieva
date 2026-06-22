@@ -10,6 +10,8 @@ import { NoteModule } from './note/note.module';
 import { TaskModule } from './task/task.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { SchedulerModule } from './scheduler/scheduler.module';
+import { ReportModule } from './report/report.module';
+
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import { SchedulerModule } from './scheduler/scheduler.module';
     NoteModule,
     TaskModule,
     SchedulerModule,
+    ReportModule,
   ],
   controllers: [AppController],
   providers: [AppService],

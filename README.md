@@ -1,98 +1,193 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# ⚜️ Valieva · Miss Perfect
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> **Asistente financiero y personal** — gestiona gastos, ingresos, tareas, recordatorios, notas y voz, todo desde Telegram.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📌 ¿Qué es Valieva?
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Valieva es un **asistente inteligente** que convierte Telegram en tu centro de control financiero y personal. Con solo escribir o hablar, puedes:
 
-## Project setup
+* 💸 Registrar gastos e ingresos en lenguaje natural (pesos mexicanos).
+* ⏰ Crear recordatorios con fecha/hora y recibir notificaciones automáticas.
+* 📋 Guardar notas rápidas y tareas con prioridad (alta, normal, baja).
+* 📊 Generar un **resumen financiero en PDF**.
+* 🎤 Usar mensajes de voz (transcripción con Whisper).
+* ⚡ Ejecutar múltiples acciones en un solo mensaje.
+
+> 🔹 **100% gratuito** (sin costes por mensajes)
+> 🔹 **Privado y personal** — solo tú y tu bot
+> 🔹 **Diseñado para la excelencia**, con estética minimalista y funcionalidad robusta
+
+---
+
+## 🧠 Tecnologías
+
+| Área                  | Tecnología                      |
+| --------------------- | ------------------------------- |
+| **Backend**           | NestJS (TypeScript)             |
+| **Base de datos**     | SQLite + Prisma ORM             |
+| **Colas y Scheduler** | BullMQ + Redis                  |
+| **IA principal**      | Groq (Llama 3.1 8B / 70B)       |
+| **Transcripción**     | Whisper (Groq)                  |
+| **Telegram API**      | Bot API Oficial                 |
+| **Reportes PDF**      | PDFKit + Diseño Personalizado   |
+
+---
+
+## 🎨 Diseño de los reportes
+
+Los resúmenes financieros se generan como **PDF premium** inspirados en marcas de lujo y publicaciones editoriales.
+
+### Características
+
+* 🖼️ Logotipo de Valieva
+* ✨ Eslogan **MISS PERFECT**
+* 🎨 Paleta de colores premium:
+
+  * Azul Imperial Oscuro `#071F5A`
+  * Azul Hielo `#CDE6F6`
+  * Gris Perla `#D5D5D5`
+  * Blanco Marfil `#F8F7F4`
+* 📊 KPIs financieros destacados
+* 📈 Análisis visual de categorías
+* 🕒 Historial reciente de movimientos
+* 💡 Observaciones personalizadas de Valieva
+* 🧾 Diseño minimalista y elegante
+
+📄 [Ver ejemplo de reporte financiero](./src/assets/ejemplo_reporte.png)
+---
+
+## ⚙️ Instalación
+
+### 1. Clonar repositorio
 
 ```bash
-$ npm install
+git clone https://github.com/AramisHS/valieva.git
+cd valieva
 ```
 
-## Compile and run the project
+### 2. Instalar dependencias
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+### 3. Variables de entorno
+
+Crear un archivo `.env`:
+
+```env
+PORT=3000
+
+DATABASE_URL="file:./dev.db"
+
+TELEGRAM_BOT_TOKEN=TU_TOKEN_DE_BOTFATHER
+
+GROQ_API_KEY=TU_API_KEY_DE_GROQ
+GROQ_MODEL=llama-3.1-8b-instant
+```
+
+### 4. Base de datos
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npx prisma generate
+npx prisma migrate dev --name init
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 5. Ejecutar aplicación
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## 🔗 Configurar Webhook de Telegram
 
-Check out a few resources that may come in handy when working with NestJS:
+Iniciar túnel local:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+ngrok http 3000
+```
 
-## Support
+Registrar webhook:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+curl -F "url=https://TU_URL.ngrok-free.app/webhook" https://api.telegram.org/botTU_TOKEN/setWebhook
+```
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 🧩 Ejemplos de uso
 
-## License
+| Acción             | Ejemplo                                               |
+| ------------------ | ----------------------------------------------------- |
+| Registrar gasto    | `gasté 150 pesos en tacos`                            |
+| Registrar ingreso  | `recibí 2000 de freelance`                            |
+| Generar reporte    | `resumen`                                             |
+| Crear recordatorio | `recuérdame pagar la luz mañana a las 8 pm`           |
+| Crear tarea        | `tarea: terminar documentación`                       |
+| Crear nota         | `nota: comprar leche y huevos`                        |
+| Múltiples acciones | `gasté 50 en café y recuérdame tomar agua en 2 horas` |
+| Mensaje de voz     | Enviar audio con cualquier instrucción                |
+| Ver tareas         | `mis tareas`                                          |
+| Completar tarea    | `completar tarea 1`                                   |
+| Borrar nota        | `borrar nota 2`                                       |
+| Buscar nota        | `buscar leche en notas`                               |
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+## 🗂️ Estructura del proyecto
+
+```text
+src/
+├── ai/                # IA, prompts, Groq y Whisper
+├── finance/           # Finanzas y transacciones
+├── reminder/          # Recordatorios y scheduler
+├── task/              # Gestión de tareas
+├── note/              # Notas rápidas
+├── report/            # Generación de PDF premium
+├── telegram/          # Webhook y mensajes
+├── prisma/            # Acceso a base de datos
+└── main.ts            # Punto de entrada
+```
+
+---
+
+## 🚀 Despliegue
+
+### Railway o Render
+
+1. Subir proyecto a GitHub.
+2. Conectar repositorio.
+3. Configurar variables de entorno.
+4. Desplegar automáticamente.
+5. Actualizar webhook con la URL pública.
+
+### Docker
+
+```bash
+docker build -t valieva .
+docker run -p 3000:3000 --env-file .env valieva
+```
+
+---
+
+## 📄 Licencia
+
+MIT License
+
+Puedes usar, modificar y distribuir este proyecto libremente.
+
+---
+
+<div align="center">
+
+### ⚜️ Valieva
+
+**MISS PERFECT**
+
+*Asistente Financiero y Personal*
+
+</div>

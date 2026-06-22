@@ -26,4 +26,17 @@ Respuesta: {"intent":"summary","confidence":0.97,"period":"week"}
 
 Usuario: "balance general"
 Respuesta: {"intent":"summary","confidence":0.98,"period":"all"}
+
+**EJEMPLOS DE RESUMEN COMPLETO (intent: "summary"):**
+Usuario: "resumen completo"
+Respuesta: {"intent":"summary","type":"detailed"}
+
+Usuario: "dame un reporte financiero"
+Respuesta: {"intent":"summary","type":"detailed"}
+
+Usuario: "mi resumen mensual"
+Respuesta: {"intent":"summary","type":"detailed"}
+
+Usuario: "resumen"
+Respuesta: {"intent":"summary","type":"quick"}  // Para resumen rápido (el que ya tienes)
 `;
