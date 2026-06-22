@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import Groq from 'groq-sdk';
 import { FULL_PROMPT } from './prompts';
+import { RateLimitError } from './errors';
 
 @Injectable()
 export class AiService {
@@ -33,6 +34,24 @@ export class AiService {
             console.log('🧠 Parsed:', parsed);
             return parsed;
         } catch (error) {
+            // Verificar si es un error de rate limit de Groq
+            const groqError = error as any;
+            if (groqError.status === 429 && groqError.error?.error?.message) {
+                const errorMessage = groqError.error.error.message;
+                // Extraer tiempo de espera: "Please try again in 34m43.967999999s."
+                const match = errorMessage.match(/try again in (\d+)m(\d+\.\d+)s/i);
+                let retrySeconds = 60; // valor por defecto
+                if (match) {
+                    const minutes = parseInt(match[1]);
+                    const seconds = parseFloat(match[2]);
+                    retrySeconds = minutes * 60 + seconds;
+                }
+                console.log(`⏳ Límite de tokens alcanzado. Esperar ${Math.ceil(retrySeconds / 60)} minutos.`);
+                throw new RateLimitError(
+                    'Se acabaron los tokens jaja 😅',
+                    retrySeconds,
+                );
+            }
             console.error('Error parseando con Groq:', error);
             return { intent: 'unknown' };
         }

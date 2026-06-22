@@ -6,9 +6,10 @@ import { TelegramModule } from './telegram/telegram.module';
 import { AiModule } from './ai/ai.module';
 import { FinanceModule } from './finance/finance.module';
 import { ReminderModule } from './reminder/reminder.module';
-import { SchedulerModule } from './scheduler/scheduler.module';
 import { NoteModule } from './note/note.module';
+import { TaskModule } from './task/task.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { SchedulerModule } from './scheduler/scheduler.module';
 
 @Module({
   imports: [
@@ -18,8 +19,9 @@ import { PrismaModule } from './prisma/prisma.module';
     AiModule,
     FinanceModule,
     ReminderModule,
-    SchedulerModule,
     NoteModule,
+    TaskModule,
+    SchedulerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -35,4 +35,51 @@ Respuesta: {"intent":"task","confidence":0.97,"description":"llamar cliente","da
 
 Usuario: "prioridad alta: entregar proyecto en 2 horas"
 Respuesta: {"intent":"task","confidence":0.98,"description":"entregar proyecto","dateTime":"${new Date(Date.now() + 7200000).toISOString()}","status":"pending","priority":"high"}
+
+Usuario: "tarea: comprar leche"
+Respuesta: {"intent":"task_create","title":"comprar leche"}
+
+Usuario: "crear tarea pagar internet"
+Respuesta: {"intent":"task_create","title":"pagar internet"}
+
+Usuario: "tarea importante: entregar proyecto mañana"
+Respuesta: {"intent":"task_create","title":"entregar proyecto","priority":"high","dueDate":"2026-06-22T10:00:00.000Z"}
+
+**EJEMPLOS DE LISTAR TAREAS (intent: "task_list"):**
+Usuario: "mis tareas"
+Respuesta: {"intent":"task_list"}
+
+Usuario: "tareas pendientes"
+Respuesta: {"intent":"task_list","filter":"pending"}
+
+Usuario: "tareas en progreso"
+Respuesta: {"intent":"task_list","filter":"in_progress"}
+
+Usuario: "tareas completadas"
+Respuesta: {"intent":"task_list","filter":"done"}
+
+**EJEMPLOS DE CAMBIAR ESTADO (intent: "task_status"):**
+Usuario: "completar tarea 2"
+Respuesta: {"intent":"task_status","taskIndex":2,"status":"done"}
+
+Usuario: "poner en progreso tarea 1"
+Respuesta: {"intent":"task_status","taskIndex":1,"status":"in_progress"}
+
+Usuario: "marcar tarea 3 como completada"
+Respuesta: {"intent":"task_status","taskIndex":3,"status":"done"}
+
+**EJEMPLOS DE ELIMINAR TAREA (intent: "task_delete"):**
+Usuario: "borrar tarea 2"
+Respuesta: {"intent":"task_delete","taskIndex":2}
+
+Usuario: "eliminar tarea 1"
+Respuesta: {"intent":"task_delete","taskIndex":1}
+
+**EJEMPLOS DE BUSCAR TAREA (intent: "task_search"):**
+Usuario: "buscar tarea internet"
+Respuesta: {"intent":"task_search","query":"internet"}
+
+Usuario: "buscar en tareas proyecto"
+Respuesta: {"intent":"task_search","query":"proyecto"}
+
 `;

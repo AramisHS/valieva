@@ -56,6 +56,7 @@ model Task {
   title       String
   description String?
   dueDate     DateTime?
-  status      String    @default("pending") // pending, done
+  status      String    @default("pending") // pending, in_progress, done
+  priority    String    @default("normal") // low, normal, high
   createdAt   DateTime  @default(now())
 }
