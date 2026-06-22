@@ -8,12 +8,12 @@
 
 Valieva es un **asistente inteligente** que convierte Telegram en tu centro de control financiero y personal. Con solo escribir o hablar, puedes:
 
-* 💸 Registrar gastos e ingresos en lenguaje natural (pesos mexicanos).
-* ⏰ Crear recordatorios con fecha/hora y recibir notificaciones automáticas.
-* 📋 Guardar notas rápidas y tareas con prioridad (alta, normal, baja).
-* 📊 Generar un **resumen financiero en PDF**.
-* 🎤 Usar mensajes de voz (transcripción con Whisper).
-* ⚡ Ejecutar múltiples acciones en un solo mensaje.
+- 💸 Registrar gastos e ingresos en lenguaje natural (pesos mexicanos).
+- ⏰ Crear recordatorios con fecha/hora y recibir notificaciones automáticas.
+- 📋 Guardar notas rápidas y tareas con prioridad (alta, normal, baja).
+- 📊 Generar un **resumen financiero en PDF**.
+- 🎤 Usar mensajes de voz (transcripción con Whisper).
+- ⚡ Ejecutar múltiples acciones en un solo mensaje.
 
 > 🔹 **100% gratuito** (sin costes por mensajes)
 > 🔹 **Privado y personal** — solo tú y tu bot
@@ -23,15 +23,15 @@ Valieva es un **asistente inteligente** que convierte Telegram en tu centro de c
 
 ## 🧠 Tecnologías
 
-| Área                  | Tecnología                      |
-| --------------------- | ------------------------------- |
-| **Backend**           | NestJS (TypeScript)             |
-| **Base de datos**     | SQLite + Prisma ORM             |
-| **Colas y Scheduler** | BullMQ + Redis                  |
-| **IA principal**      | Groq (Llama 3.1 8B / 70B)       |
-| **Transcripción**     | Whisper (Groq)                  |
-| **Telegram API**      | Bot API Oficial                 |
-| **Reportes PDF**      | PDFKit + Diseño Personalizado   |
+| Área                  | Tecnología                    |
+| --------------------- | ----------------------------- |
+| **Backend**           | NestJS (TypeScript)           |
+| **Base de datos**     | SQLite + Prisma ORM           |
+| **Colas y Scheduler** | BullMQ + Redis                |
+| **IA principal**      | Groq (Llama 3.1 8B / 70B)     |
+| **Transcripción**     | Whisper (Groq)                |
+| **Telegram API**      | Bot API Oficial               |
+| **Reportes PDF**      | PDFKit + Diseño Personalizado |
 
 ---
 
@@ -41,22 +41,22 @@ Los resúmenes financieros se generan como **PDF premium** inspirados en marcas 
 
 ### Características
 
-* 🖼️ Logotipo de Valieva
-* ✨ Eslogan **MISS PERFECT**
-* 🎨 Paleta de colores premium:
+- 🖼️ Logotipo de Valieva
+- ✨ Eslogan **MISS PERFECT**
+- 🎨 Paleta de colores premium:
 
-  * Azul Imperial Oscuro `#071F5A`
-  * Azul Hielo `#CDE6F6`
-  * Gris Perla `#D5D5D5`
-  * Blanco Marfil `#F8F7F4`
-* 📊 KPIs financieros destacados
-* 📈 Análisis visual de categorías
-* 🕒 Historial reciente de movimientos
-* 💡 Observaciones personalizadas de Valieva
-* 🧾 Diseño minimalista y elegante
+  - Azul Imperial Oscuro `#071F5A`
+  - Azul Hielo `#CDE6F6`
+  - Gris Perla `#D5D5D5`
+  - Blanco Marfil `#F8F7F4`
 
-📄 [Ver ejemplo de reporte financiero](./src/assets/ejemplo_reporte.png)
----
+- 📊 KPIs financieros destacados
+- 📈 Análisis visual de categorías
+- 🕒 Historial reciente de movimientos
+- 💡 Observaciones personalizadas de Valieva
+- 🧾 Diseño minimalista y elegante
+
+## ![Ejemplo de reporte financiero](./src/assets/ejemplo_reporte.png)
 
 ## ⚙️ Instalación
 
@@ -188,6 +188,6 @@ Puedes usar, modificar y distribuir este proyecto libremente.
 
 **MISS PERFECT**
 
-*Asistente Financiero y Personal*
+_Asistente Financiero y Personal_
 
 </div>
