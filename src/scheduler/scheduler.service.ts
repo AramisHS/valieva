@@ -12,7 +12,6 @@ export class SchedulerService {
 
     @Cron('*/10 * * * * *')
     async checkReminders() {
-        // console.log('🕒 Revisando recordatorios...');
         const now = new Date();
 
         const reminders = await this.prisma.reminder.findMany({

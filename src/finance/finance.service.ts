@@ -42,7 +42,6 @@ export class FinanceService {
         };
     }
 
-    // ✅ NUEVO: Obtener todas las transacciones de un usuario
     async getTransactions(userId: string) {
         return this.prisma.transaction.findMany({
             where: { userId },

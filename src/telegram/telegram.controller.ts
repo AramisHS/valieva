@@ -126,7 +126,6 @@ export class TelegramController {
           return { type: 'message', message: `💰 Ingreso registrado` };
 
         case 'summary': {
-          // ✅ Generar PDF usando ReportService
           const pdfBuffer = await this.reportService.generateFinancialReport(userId);
           const fileName = `resumen_${new Date().toISOString().slice(0,10)}.pdf`;
           return { type: 'pdf', fileName, buffer: pdfBuffer };
@@ -231,12 +230,8 @@ export class TelegramController {
     }
   }
 
-  // ------------------------------------------------------------
-  // Comandos manuales (notas y tareas por regex)
-  // ------------------------------------------------------------
   private async handleManualCommands(text: string, userId: string, chatId: number): Promise<boolean> {
     try {
-      // NOTAS
       const delNote = text.match(/^(borrar|eliminar)\s+nota\s+(\d+)/i);
       if (delNote) {
         const notes = await this.noteService.getNotes(userId);
@@ -282,7 +277,6 @@ export class TelegramController {
         return true;
       }
 
-      // TAREAS
       const completeTask = text.match(/^completar\s+tarea\s+(\d+)/i);
       if (completeTask) {
         const tasks = await this.taskService.getTasks(userId);

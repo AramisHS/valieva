@@ -27,7 +27,6 @@ export class ReportService {
             });
         }
 
-        // --- Agrupación de gastos ---
         const categoryMap: Record<string, number> = {};
         transactions.filter(t => t.type === 'expense').forEach(t => {
             categoryMap[t.category] = (categoryMap[t.category] || 0) + t.amount;
@@ -42,7 +41,6 @@ export class ReportService {
 
         const recent = transactions.slice(0, 10);
 
-        // --- Consejo personalizado ---
         let advice = '';
         if (summary.balance < 0) {
             const top = sortedCategories[0] ?? { category: 'gastos', percentage: 0 };
@@ -53,11 +51,6 @@ export class ReportService {
             advice = `Tu balance está en cero. Te sugerimos generar ingresos adicionales o reducir gastos para crear un colchón financiero.`;
         }
 
-        // =====================
-        // CONSTRUCCIÓN DEL PDF
-        // =====================
-
-        // --- HEADER: Logo + eslogan ---
         const logoPath = path.join(__dirname, '..', 'assets', 'valieva-logo.png');
         let logoBottom = 80;
         if (fs.existsSync(logoPath)) {
@@ -73,14 +66,12 @@ export class ReportService {
             }
         }
 
-        // Línea decorativa bajo el header
         doc.moveTo(60, logoBottom)
             .lineTo(550, logoBottom)
             .strokeColor('#D5D5D5')
             .lineWidth(0.5)
             .stroke();
 
-        // Fecha alineada a la derecha
         doc.font('Helvetica')
             .fontSize(8)
             .fillColor('#A9A9A9')
@@ -90,13 +81,11 @@ export class ReportService {
                 { align: 'right', width: 490 }
             );
 
-        // --- TÍTULO PRINCIPAL ---
         doc.font('Times-Roman')
             .fontSize(22)
             .fillColor('#071F5A')
             .text('Reporte financiero personal', 60, logoBottom + 28, { align: 'left' });
 
-        // --- KPIs ---
         let yPos = logoBottom + 80;
         const kpiX = [60, 180, 300, 420];
         const kpiWidth = 110;
@@ -121,7 +110,6 @@ export class ReportService {
 
         yPos += 48;
 
-        // --- Helper separador ---
         const drawSeparator = (y: number) => {
             doc.moveTo(60, y).lineTo(550, y).strokeColor('#D5D5D5').lineWidth(0.5).stroke();
         };
@@ -129,7 +117,6 @@ export class ReportService {
         drawSeparator(yPos);
         yPos += 20;
 
-        // --- GASTOS POR CATEGORÍA ---
         doc.font('Times-Roman')
             .fontSize(12)
             .fillColor('#071F5A')
@@ -159,7 +146,6 @@ export class ReportService {
         drawSeparator(yPos);
         yPos += 20;
 
-        // --- MOVIMIENTOS RECIENTES ---
         doc.font('Times-Roman').fontSize(12).fillColor('#071F5A').text('Movimientos recientes', 60, yPos);
         yPos += 20;
 
@@ -197,7 +183,6 @@ export class ReportService {
             yPos += 20;
         }
 
-        // --- OBSERVACIONES ---
         doc.x = 60;
         doc.y = yPos;
 
@@ -205,7 +190,6 @@ export class ReportService {
         doc.text('Observaciones de Valieva', { lineBreak: true });
         yPos = doc.y + 5;
 
-        // Línea decorativa con estrella
         doc.moveTo(60, yPos).lineTo(90, yPos).strokeColor('#D5D5D5').lineWidth(0.5).stroke();
         doc.font('Times-Roman').fontSize(8).fillColor('#071F5A').text('★', 93, yPos - 4, { width: 10 });
         doc.moveTo(107, yPos).lineTo(260, yPos).strokeColor('#D5D5D5').lineWidth(0.5).stroke();
@@ -216,7 +200,6 @@ export class ReportService {
 
         yPos = doc.y + 20;
 
-        // --- PIE DE PÁGINA (sin forzar página nueva) ---
         const footerText = 'Generado por Valieva · Miss Perfect';
         const pageContentEnd = doc.page.height - doc.page.margins.bottom;
 
@@ -252,6 +235,5 @@ export class ReportService {
     }
 
     private applyPremiumStyles(_doc: PDFKit.PDFDocument) {
-        // no-op
     }
 }

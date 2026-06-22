@@ -10,7 +10,6 @@ export class ReminderService {
         title: string;
         dateTime: Date;
     }) {
-        // Validar que la fecha sea válida
         if (isNaN(data.dateTime.getTime())) {
             console.error('❌ Fecha inválida recibida:', data.dateTime);
             throw new Error('Fecha inválida para recordatorio');

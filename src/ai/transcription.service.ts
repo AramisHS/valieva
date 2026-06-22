@@ -15,7 +15,6 @@ export class TranscriptionService {
 
     async transcribeAudio(fileBuffer: Buffer, mimeType: string): Promise<string> {
         try {
-            // Convertir Buffer a Uint8Array para que sea compatible con Blob
             const uint8Array = new Uint8Array(fileBuffer);
             const blob = new Blob([uint8Array], { type: mimeType });
             const file = new File([blob], 'audio.ogg', { type: mimeType });
@@ -27,8 +26,6 @@ export class TranscriptionService {
                 response_format: 'text',
             });
 
-            // Si response_format: 'text', la respuesta es un string.
-            // Pero por si acaso, extraemos .text si es un objeto.
             return typeof transcription === 'string'
                 ? transcription
                 : (transcription as any).text || '';
